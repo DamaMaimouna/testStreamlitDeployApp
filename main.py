@@ -1,16 +1,10 @@
 import streamlit as st
+import pandas as pd 
 import json
+import plotly.express as px
 
-# Set the title of the Streamlit app
 with st.sidebar:
+    st.subheader( "this is a test")
 
-    st.title('JSON File Reader')
-    # Upload a JSON file
-    uploaded_file = st.file_uploader("Choose a JSON file", type="json")
-
-    if uploaded_file is not None:
-        # Read the JSON file
-        data = json.load(uploaded_file)
-
-        # Display the JSON data
-        st.json(data)
+st.title ( "Une app Multipage ")
+st.image('images/sf st.jpeg' , width = 400, use_column_width = False)
