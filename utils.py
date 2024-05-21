@@ -1,7 +1,5 @@
 import streamlit as st 
 import pandas as pd
-import openai 
-
 
 @st.cache_data  
 def load_json(path):
@@ -10,9 +8,11 @@ def load_json(path):
 
 def get_openai_response(user_input):
     try:
-        response = openai.ChatCompletion.create(
+        
+        
+        response = ChatOpenAI().invoke(
             model ="gpt-3.5-turbo",
-          
+           
             messages = [
                 { "role":"system", "content": "You are a helpful assistant."},
                 {"role":"user", "content": user_input }

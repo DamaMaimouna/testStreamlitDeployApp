@@ -1,11 +1,10 @@
 import streamlit as st
 import pandas as pd 
 import json
-import plotly.express as px
 import utils as ul
 import datetime as dt
 
-# Set the title of the Streamlit app
+# Site bar canva
 with st.sidebar:
 
     st.title('FILE READER')
@@ -18,6 +17,8 @@ with st.sidebar:
 
             # Display the JSON data
             st.json(data)
+
+#Main canva / central
 st.title('Candidate dashboard')
 
 
@@ -28,12 +29,7 @@ candidate = ul.load_json('data/dataset.json')
 st.button("Rerun")
 candidate['year'] = pd.to_datetime(candidate['start_date']).dt.year
 candidate['month'] = pd.to_datetime(candidate['start_date']).dt.month
-#st.write(candidate)
-# streamlit line chart
-#st.line_chart(candidate, x='start_date', y = ['nbr_refused', 'nbr_validated'], color=[ "#ff0000" ,"#a3ffb4"]  )
-#area chart with st
-#st.area_chart(candidate, x= 'start_date', y = ['nbr_refused', 'nbr_validated'], color=[ "#ff0000" ,"#a3ffb4"]  ) #red and pink ,
-#creation de sliders / 
+
 start_date_slider = st.slider("Selectionnez la date de debut" , min_value=candidate['month'].unique().min()\
                               , max_value = candidate['month'].unique().max(), value = candidate['month'].unique().min())
 st.write("Start date:", start_date_slider)
